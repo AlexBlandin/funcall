@@ -7,7 +7,7 @@ An implementaion of [UFCS (Uniform Function Call Syntax)](https://en.wikipedia.o
 from funcall import obj
 
 x = obj(5).range.sum
-# This is equivalent to;
+# This is equivalent to:
 # x = sum(range(5))
 
 y = x + 5
@@ -42,7 +42,7 @@ This fork includes an extension that will traverse the stack frames in search of
 from funcall import obj
 
 obj('spam bacon sausage spam').split.call('-'.join)
-# This is equivalent to;
+# This is equivalent to:
 '-'.join('spam bacon sausage spam'.split())
 
 square = lambda x: x**2
@@ -53,9 +53,8 @@ square(3)
 import numpy as np
 
 obj(5).call(np.arange)
-# This is equivalent to;
+# This is equivalent to:
 np.arange(5)
-# obj(5).np.arange doesn't work...
 ```
 
 ------
