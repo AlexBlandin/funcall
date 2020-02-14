@@ -18,10 +18,7 @@ y = x + 5
 ## Installation
 `funcall` has no dipendencies.
 
-```bash
-$ sudo pip install funcall
-```
-
+Not currently uploaded to PyPi.
 
 ## Usage
 ### ChainableObject.map, filter, reduce
