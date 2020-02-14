@@ -1,7 +1,7 @@
 # funcall
 UFCS for Python.
 
-An implementaion of [UFCS(Uniform function call syntax)](https://en.wikipedia.org/wiki/Uniform_Function_Call_Syntax) for Python. This package allows any function to be called using the syntax for member accessing. An object wrapped in the `funcall.obj` function accepts any function as its own member. The object is converted to a `funcall.ChainableObject`, but it behaves as expected.
+An implementaion of [UFCS (Uniform Function Call Syntax)](https://en.wikipedia.org/wiki/Uniform_Function_Call_Syntax) for Python. This package allows any function to be called using the syntax for member accessing. An object wrapped in the `funcall.obj` function accepts any function as its own member. The object is converted to a `funcall.ChainableObject`, but it behaves as expected.
 
 ```python
 from funcall import obj
@@ -16,7 +16,7 @@ y = x + 5
 
 
 ## Installation
-`funcall` has no dipendencies.
+`funcall` has no dipendencies. Tested on Python 3, might work on Python 2.
 
 Not currently uploaded to PyPi.
 
