@@ -1,6 +1,10 @@
 # -*- coding: utf-8 -*-
 from __future__ import print_function
-
+from inspect import getouterframes, currentframe #, signature
+try:
+    from functools import reduce
+except ImportError:
+    pass # Only need to import reduce in Python 3
 
 class ChainableObject(object):
     def __init__(self, value, func=lambda x: x):
@@ -15,13 +19,24 @@ class ChainableObject(object):
             func = eval(name)
             return ChainableObject(self.__func(self.__value), func)
         except NameError:
-            member = getattr(self.__func(self.__value), name)
-            if callable(member):
-                return ChainableObject(
-                    self.__func(self.__value),
-                    lambda self, *args, **kwargs: member(*args, **kwargs))
-            else:
-                return ChainableObject(member)
+            try:
+                member = getattr(self.__func(self.__value), name)
+                if callable(member):
+                    return ChainableObject(
+                        self.__func(self.__value),
+                        lambda self, *args, **kwargs: member(*args, **kwargs))
+                else:
+                    return ChainableObject(member)
+            except AttributeError as err:
+                local = None
+                # Lookup binds to nearest frame's one first
+                for depth, frame in enumerate(getouterframes(currentframe())[1:]):
+                    if name in frame[0].f_locals and callable(frame[0].f_locals[name]):
+                        local = frame[0].f_locals[name]
+                        break
+                if local:
+                    return self.call(local)
+                raise err
 
     def call(self, func):
         return ChainableObject(
