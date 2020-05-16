@@ -284,14 +284,14 @@ class ChainableObject(object):
     return self.__func(self.__value).__exit__(*args, **kwargs)
 
 
-def ufo(x):
-  '''ufo(x) -> "chainable" UFcs Object
+def obj(x):
+  '''obj(x) -> "chainable" UFcs Object
 
   Convert an object to a chainable object.
 
   Example
   -------
-  >>> ufo(10).range.filter(lambda x: x > 2).map(float).puts
+  >>> obj(10).range.filter(lambda x: x > 2).map(float).puts
   [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0]
   This is equivelent to;
   >>> print(map(float, filter(lambda x: x > 2, range(10))))
