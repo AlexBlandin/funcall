@@ -29,7 +29,7 @@ class ChainableObject(object):
           return ChainableObject(member)
       except AttributeError as err:
         local = None
-        # Lookup binds to nearest frame first
+        # Lookup binds to nearest frame first (implies lexical shadowing)
         for depth, frame in enumerate(getouterframes(currentframe())[1:]):
           if name in frame[0].f_locals and callable(frame[0].f_locals[name]):
             local = frame[0].f_locals[name]
