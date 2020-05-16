@@ -16,7 +16,7 @@ y = x + 5
 
 
 ## Installation
-`funcall` has no dipendencies. Tested on Python 3, might work on Python 2.
+`funcall` has no dependencies. Tested on Python 3, might work on Python 2.
 
 Not currently uploaded to PyPi.
 
